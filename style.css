@@ -2,30 +2,37 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgb(197, 228, 255);
 }
 
 .calculator-container {
     display: flex;
     flex-direction: column;
-    height: 600px;
-    width: 400px;
-    background-color: antiquewhite;
-    justify-content: space-around;
+    height: 500px;
+    width: 350px;
+    padding: 20px;
+    background-color: rgb(98, 98, 98);
+    border-radius: 20px;
 }
 
 .display {
     display: flex;
-    height: 150px;
-    width: 350px;
+    min-width: 350px;
+    flex: 1;
     align-self: center;
-    background-color: rgb(185, 222, 222);
+    justify-self: flex-start;
+    background-color: rgb(156, 156, 156);
+    border-radius: 20px;
 }
 
 .button-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    background-color: azure;
-    margin: 15px;
+    margin-top: 20px;
 }
 
 .top-row, .second-row, .third-row, .fourth-row, .bottom-row {
@@ -35,11 +42,12 @@ body {
 .button {
     display: flex;
     flex: 1;
-    background-color: aquamarine;
+    background-color: rgb(182, 182, 182);
     margin: 5px;
     height: 60px;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
 }
 
 #equal {

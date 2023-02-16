@@ -1,0 +1,28 @@
+body {
+    display: flex;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 300px;
+    background-color: antiquewhite;
+}
+
+.display {
+    display: flex;
+    height: 100px;
+    width: 250px;
+    background-color: rgb(185, 222, 222);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+}
+
+.top-row, .second-row, .third-row, .fourth-row, .bottom-row {
+    display: flex;
+}

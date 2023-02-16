@@ -31,7 +31,7 @@ body {
     justify-self: flex-start;
     background-color: rgb(100, 100, 100);
     border-radius: 20px;
-    box-shadow: 3px 3px 4px rgb(67, 67, 67) inset;
+    box-shadow: 5px 5px 3px rgb(67, 67, 67) inset;
 }
 
 .running-total, .current-number {
@@ -78,7 +78,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    box-shadow: 3px 3px 4px rgb(67, 67, 67);
+    box-shadow: 3px 3px 2px rgb(44, 44, 44);
     transition: 0.2s ;
 }
 
@@ -88,6 +88,19 @@ body {
     transition: 0.2s ease-out;
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.15em);
+    box-shadow: 5px 5px 3px rgb(44, 44, 44);
+}
+
+#clear:hover, #backspace:hover {
+    background-color: #c87b7b;
+}
+
+#percentage:hover, #divide:hover, #add:hover, #subtract:hover, #multiply:hover {
+    background-color: #6fb5dd;
+}
+
+#equal:hover {
+    background-color: #8de575;
 }
 
 #equal {

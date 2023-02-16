@@ -5,7 +5,7 @@ body {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-weight: 600;
     font-size: 25px;
-    background-color: rgb(197, 228, 255);
+    background-color: #1ba98d;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -17,7 +17,7 @@ body {
     height: 500px;
     width: 350px;
     padding: 20px;
-    background-color: rgb(98, 98, 98);
+    background-color: rgb(64, 64, 64);
     border-radius: 20px;
     box-shadow: 3px 3px 10px rgb(67, 67, 67);
 }
@@ -29,7 +29,7 @@ body {
     flex: 1;
     align-self: center;
     justify-self: flex-start;
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(100, 100, 100);
     border-radius: 20px;
     box-shadow: 3px 3px 4px rgb(67, 67, 67) inset;
 }
@@ -37,11 +37,24 @@ body {
 .running-total, .current-number {
     display: flex;
     flex: 1;
-    background-color: aqua;
+    /* background-color: aqua; */
     margin: 5px;
     align-self: flex-end;
     max-width: 340px;
     border-radius: 15px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.running-total {
+    font-size: 19px;
+    font-weight: 100;
+    color: #57bb98;
+}
+
+.current-number {
+    font-size: 30px;
+    color: #ffffff;
 }
 
 .button-container {
@@ -58,13 +71,19 @@ body {
 .button {
     display: flex;
     flex: 1;
-    background-color: rgb(182, 182, 182);
+    background-color: rgb(134, 134, 134);
+    color: #ffffff;
     margin: 5px;
     height: 60px;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
     box-shadow: 3px 3px 4px rgb(67, 67, 67);
+}
+
+.button:hover {
+    background-color: #bbbbbb;
+    color: #000000;
 }
 
 #equal {

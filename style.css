@@ -79,11 +79,15 @@ body {
     align-items: center;
     border-radius: 50px;
     box-shadow: 3px 3px 4px rgb(67, 67, 67);
+    transition: 0.3s ;
 }
 
 .button:hover {
     background-color: #bbbbbb;
     color: #000000;
+    transition: 0.3s ease-out;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.2em);
 }
 
 #equal {

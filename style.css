@@ -24,13 +24,24 @@ body {
 
 .display {
     display: flex;
-    min-width: 350px;
+    flex-direction: column;
+    width: 350px;
     flex: 1;
     align-self: center;
     justify-self: flex-start;
     background-color: rgb(156, 156, 156);
     border-radius: 20px;
     box-shadow: 3px 3px 4px rgb(67, 67, 67) inset;
+}
+
+.running-total, .current-number {
+    display: flex;
+    flex: 1;
+    background-color: aqua;
+    margin: 5px;
+    align-self: flex-end;
+    max-width: 340px;
+    border-radius: 15px;
 }
 
 .button-container {

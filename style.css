@@ -16,6 +16,7 @@ body {
     padding: 20px;
     background-color: rgb(98, 98, 98);
     border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(67, 67, 67);
 }
 
 .display {
@@ -26,6 +27,7 @@ body {
     justify-self: flex-start;
     background-color: rgb(156, 156, 156);
     border-radius: 20px;
+    box-shadow: 3px 3px 4px rgb(67, 67, 67) inset;
 }
 
 .button-container {
@@ -48,6 +50,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 50px;
+    box-shadow: 3px 3px 4px rgb(67, 67, 67);
 }
 
 #equal {

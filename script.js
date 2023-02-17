@@ -24,10 +24,19 @@ const runningTotal = document.getElementById('runningTotal');
 const buttons = Array.from(document.querySelectorAll('.populate'));
 buttons.forEach(button => button.addEventListener('click', populateDisplay));
 
+// event listener for all operator buttons
+const operators = Array.from(document.querySelectorAll('.operator'));
+operators.forEach(operator => operator.addEventListener('click', updateRunningTotal));
+
 // event listeners for clear, backspace, and enter
 clear.addEventListener('click', clearDisplay);
 backspace.addEventListener('click', backspaceDisplay);
 
+function updateRunningTotal () {
+    let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
+    runningTotal.innerHTML = newRunningTotal;
+    currentNumber.innerHTML = '0';
+};
 
 function backspaceDisplay() {
     if (currentNumber.innerHTML.length == 1) {

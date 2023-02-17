@@ -42,7 +42,7 @@ buttons.forEach(button => button.addEventListener('click', populateDisplay));
 // equal.addEventListener('click', [insert function]);
 
 function populateDisplay() {
-    document.querySelector('.current-number').innerHTML = this.value;
+    document.querySelector('.current-number').innerHTML = this.innerHTML;
 }
 
 function addNum(a, b) {

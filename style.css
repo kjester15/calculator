@@ -86,9 +86,13 @@ body {
     background-color: #bbbbbb;
     color: #515151;
     transition: 0.2s ease-out;
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.15em);
     box-shadow: 5px 5px 3px rgb(44, 44, 44);
+}
+
+.click {
+    /* transition: 0.2s ease-out; */
+    transform: translateY(0.15em);
 }
 
 #clear:hover, #backspace:hover {

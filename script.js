@@ -20,7 +20,12 @@ const equal = document.getElementById('equal');
 const currentNumber = document.getElementById('currentNumber');
 const runningTotal = document.getElementById('runningTotal');
 
-// event listener for all buttons except clear, backspace, and enter
+let number1 = 0;
+let number2 = 0;
+let answer = 0;
+let currentOperator = '';
+
+// event listener for all buttons except clear, backspace, and equal
 const buttons = Array.from(document.querySelectorAll('.populate'));
 buttons.forEach(button => button.addEventListener('click', populateDisplay));
 
@@ -32,10 +37,35 @@ operators.forEach(operator => operator.addEventListener('click', updateRunningTo
 clear.addEventListener('click', clearDisplay);
 backspace.addEventListener('click', backspaceDisplay);
 
+
 function updateRunningTotal () {
-    let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
-    runningTotal.innerHTML = newRunningTotal;
-    currentNumber.innerHTML = '0';
+    if (currentNumber == '') {
+        return;
+    }
+    else {
+        if (runningTotal.innerHTML == '') {
+            number1 = Number(currentNumber.innerHTML);
+            // console.log('this is number1: ' + number1);
+        }
+        else {
+            number2 = Number(currentNumber.innerHTML);
+            // console.log('this is number2: ' + number2);
+            answer = operate(number1, number2, currentOperator);
+            number1 = answer;
+            number2 = 0;
+            console.log('this is answer: ' + answer);
+        }
+        
+        let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
+        runningTotal.innerHTML = newRunningTotal;
+        if (this.innerHTML == '=') {
+            currentNumber.innerHTML = answer;
+        }
+        else {
+            currentNumber.innerHTML = '';
+            currentOperator = this.innerHTML;
+        }
+    }
 };
 
 function backspaceDisplay() {
@@ -58,7 +88,7 @@ function clearDisplay() {
 };
 
 function checkDisplay(value) {
-    const regex = /[1234567890,]/;
+    const regex = /[1234567890.]/;
     if (regex.test(value.innerHTML)) {
         return true;
     }
@@ -101,7 +131,7 @@ function operate(a, b, operator) {
             return addNum(a,b);
         case '-':
             return subtractNum(a,b);
-        case '*':
+        case 'x':
             return multiplyNum(a,b);
         case '/':
             return divideNum(a,b);

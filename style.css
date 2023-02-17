@@ -5,7 +5,7 @@ body {
     font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
     font-weight: 600;
     font-size: 25px;
-    background-color: #1ba98d;
+    background-color: #f66025;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -84,7 +84,7 @@ body {
 
 .button:hover {
     background-color: #bbbbbb;
-    color: #000000;
+    color: #515151;
     transition: 0.2s ease-out;
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.15em);
@@ -93,14 +93,17 @@ body {
 
 #clear:hover, #backspace:hover {
     background-color: #c87b7b;
+    color: #f62525;
 }
 
 #percentage:hover, #divide:hover, #add:hover, #subtract:hover, #multiply:hover {
     background-color: #6fb5dd;
+    color: #568cab;
 }
 
 #equal:hover {
     background-color: #8de575;
+    color: #49a72f;
 }
 
 #equal {

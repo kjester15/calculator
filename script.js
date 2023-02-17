@@ -20,8 +20,11 @@ const equal = document.getElementById('equal');
 const currentNumber = document.getElementById('currentNumber');
 const runningTotal = document.getElementById('runningTotal');
 
-const buttons = Array.from(document.querySelectorAll('.button'));
+const buttons = Array.from(document.querySelectorAll('.populate'));
 buttons.forEach(button => button.addEventListener('click', populateDisplay));
+
+clear.addEventListener('click', clearDisplay);
+
 
 // clear.addEventListener('click', [insert function]);
 // backspace.addEventListener('click', [insert function]);
@@ -43,6 +46,11 @@ buttons.forEach(button => button.addEventListener('click', populateDisplay));
 // point.addEventListener('click', [insert function]);
 // equal.addEventListener('click', [insert function]);
 
+function clearDisplay() {
+    currentNumber.innerHTML = '0';
+    runningTotal.innerHTML = '';
+}
+
 function checkDisplay(value) {
     const regex = /[1234567890,]/;
     if (regex.test(value.innerHTML)) {
@@ -54,11 +62,14 @@ function checkDisplay(value) {
 }
 
 function populateDisplay() {
-    if (checkDisplay(this)) {
-        document.querySelector('.current-number').innerHTML += this.innerHTML;
+    if (currentNumber.innerHTML == '0') {
+        currentNumber.innerHTML = this.innerHTML;
+    }
+    else if (checkDisplay(this)) {
+        currentNumber.innerHTML += this.innerHTML;
     }
     else {
-        document.querySelector('.current-number').innerHTML = this.innerHTML;
+        currentNumber.innerHTML = this.innerHTML;
     }
 }
 

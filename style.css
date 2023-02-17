@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 470px;
-    width: 350px;
+    width: 300px;
     padding: 20px;
     background-color: rgb(64, 64, 64);
     border-radius: 20px;
@@ -25,13 +25,13 @@ body {
 .display {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 300px;
     flex: 1;
     align-self: center;
     justify-self: flex-start;
     background-color: rgb(100, 100, 100);
     border-radius: 20px;
-    box-shadow: 5px 5px 3px rgb(67, 67, 67) inset;
+    box-shadow: 5px 5px 1px rgb(58, 58, 58) inset;
 }
 
 .running-total, .current-number {

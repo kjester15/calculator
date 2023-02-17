@@ -19,7 +19,6 @@ const point = document.getElementById('point');
 const equal = document.getElementById('equal');
 const currentNumber = document.getElementById('currentNumber');
 const runningTotal = document.getElementById('runningTotal');
-let displayArray = Array.from(currentNumber.innerHTML);
 
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach(button => button.addEventListener('click', populateDisplay));
@@ -44,24 +43,18 @@ buttons.forEach(button => button.addEventListener('click', populateDisplay));
 // point.addEventListener('click', [insert function]);
 // equal.addEventListener('click', [insert function]);
 
-function checkDisplay() {
-    let displayArray = Array.from(currentNumber.innerHTML);
-    console.log(displayArray);
-    let arrayLength = displayArray.length;
+function checkDisplay(value) {
     const regex = /[1234567890,]/;
-    for (let i = 0; i < arrayLength; i++) {
-        if (regex.test(displayArray[i])){
-            continue;
-        }
-        else {
-            return false;
-        }
+    if (regex.test(value.innerHTML)) {
+        return true;
     }
-    return true;
+    else {
+        return false;
+    }
 }
 
 function populateDisplay() {
-    if (checkDisplay()) {
+    if (checkDisplay(this)) {
         document.querySelector('.current-number').innerHTML += this.innerHTML;
     }
     else {

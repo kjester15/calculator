@@ -46,11 +46,6 @@ percentage.addEventListener('click', createPercentage);
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach(button => button.addEventListener('click', setLastClicked));
 
-// event listener for equal to set continueCalc to true
-equal.addEventListener('click', function () {
-    continueCalc = true;
-});
-
 function displayAnswer (e) {
     // displays answer in currentNumber when equal is clicked
     if (e.innerHTML == '=') {
@@ -81,9 +76,10 @@ function updateRunningTotal () {
         return;
     }
 
-    // if (currentOperator == '=') {
-    //     runningTotal.innerHTML = answer;
-    // }
+    // resets running total before proceeding with operation if last operator was =
+    if (currentOperator == '=') {
+        runningTotal.innerHTML = '';
+    }
     
     if (runningTotal.innerHTML == '') {
         number1 = Number(currentNumber.innerHTML);
@@ -123,7 +119,6 @@ function backspaceDisplay() {
         let currentString = currentArray.join('');
         currentNumber.innerHTML = currentString;
     }
-    continueCalc = false;
 };
 
 function clearDisplay() {

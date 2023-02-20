@@ -26,7 +26,7 @@ let answer = 0;
 let currentOperator = '';
 let lastClicked = '';
 
-// event listener for all buttons except clear, backspace, and equal
+// event listener for all buttons except clear, backspace, percentage and equal
 const populateButtons = Array.from(document.querySelectorAll('.populate'));
 populateButtons.forEach(button => button.addEventListener('click', populateDisplay));
 
@@ -38,14 +38,21 @@ operators.forEach(operator => operator.addEventListener('click', updateRunningTo
 clear.addEventListener('click', clearDisplay);
 backspace.addEventListener('click', backspaceDisplay);
 
+// event listener for percentage
+percentage.addEventListener('click', createPercentage);
+
 // event listener for lastClicked
 const buttons = Array.from(document.querySelectorAll('.button'));
 buttons.forEach(button => button.addEventListener('click', setLastClicked));
 
 
+function createPercentage () {
+    let newPercentage = currentNumber.innerHTML / 100;
+    currentNumber.innerHTML = newPercentage;
+}
+
 function setLastClicked () {
     lastClicked = this.innerHTML;
-    console.log(lastClicked);
 }
 
 function updateRunningTotal () {
@@ -61,22 +68,27 @@ function updateRunningTotal () {
     else {
         if (runningTotal.innerHTML == '') {
             number1 = Number(currentNumber.innerHTML);
-            console.log('this is number 1: ' + number1);
+            // console.log('this is number 1: ' + number1);
         }
         else {
             number2 = Number(currentNumber.innerHTML);
-            console.log('this is number 2: ' + number2);
-            answer = operate(number1, number2, currentOperator);
-            console.log('this is answer: ' + answer);
+            // console.log('this is number 2: ' + number2);
+            answer = Math.round((operate(number1, number2, currentOperator) + Number.EPSILON) * 100) / 100;
+            // console.log('this is answer: ' + answer);
             number1 = answer;
             number2 = 0;
         }
         
+        // updates running total with operator or without equal sign depending on which is clicked
         if (this.innerHTML != '=') {
             let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
             runningTotal.innerHTML = newRunningTotal;
         }
-       
+        else if (this.innerHTML == '=') {
+            let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ';
+            runningTotal.innerHTML = newRunningTotal;
+        }
+
         // displays answer in currentNumber when equal is clicked
         if (this.innerHTML == '=') {
             currentNumber.innerHTML = answer;

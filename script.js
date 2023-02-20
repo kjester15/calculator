@@ -130,6 +130,9 @@ function backspaceDisplay() {
 function clearDisplay() {
     currentNumber.innerHTML = '';
     runningTotal.innerHTML = '';
+    number1 = 0;
+    number2 = 0;
+    answer = 0;
 };
 
 function checkDisplay(value) {

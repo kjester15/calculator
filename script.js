@@ -49,6 +49,12 @@ function setLastClicked () {
 }
 
 function updateRunningTotal () {
+    // don't allow operators to be clicked more than once
+    if (lastClicked == '+' || lastClicked == '-' || lastClicked == '/' || lastClicked == 'x' || lastClicked == '=') {
+        return;
+    }
+    
+    // don't allow calculation without entering a number
     if (currentNumber == '') {
         return;
     }

@@ -51,7 +51,7 @@ function displayAnswer (e) {
     // displays answer in currentNumber when equal is clicked
     if (e.innerHTML == '=') {
         if (answer.toString().length > currentNumberLength) {
-            currentNumber.innerHTML = answer.toString().substring(0,13) + '...';
+            currentNumber.innerHTML = answer.toExponential().substring(0,15);
         }
         else {
             currentNumber.innerHTML = answer;
@@ -147,6 +147,10 @@ function checkDisplay(value) {
 
 function populateDisplay() {
     const length = 15;
+    let currentArray = Array.from(currentNumber.innerHTML);
+    if (this.innerHTML == '.' && currentArray.includes('.')) {
+        return;
+    }
     if (currentNumber.innerHTML.length < 15) {
         if (currentNumber.innerHTML == '0') {
             currentNumber.innerHTML = this.innerHTML;

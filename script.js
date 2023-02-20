@@ -24,19 +24,29 @@ let number1 = 0;
 let number2 = 0;
 let answer = 0;
 let currentOperator = '';
+let lastClicked = '';
 
 // event listener for all buttons except clear, backspace, and equal
-const buttons = Array.from(document.querySelectorAll('.populate'));
-buttons.forEach(button => button.addEventListener('click', populateDisplay));
+const populateButtons = Array.from(document.querySelectorAll('.populate'));
+populateButtons.forEach(button => button.addEventListener('click', populateDisplay));
 
 // event listener for all operator buttons
 const operators = Array.from(document.querySelectorAll('.operator'));
 operators.forEach(operator => operator.addEventListener('click', updateRunningTotal));
 
-// event listeners for clear, backspace, and enter
+// event listeners for clear, and backspace
 clear.addEventListener('click', clearDisplay);
 backspace.addEventListener('click', backspaceDisplay);
 
+// event listener for lastClicked
+const buttons = Array.from(document.querySelectorAll('.button'));
+buttons.forEach(button => button.addEventListener('click', setLastClicked));
+
+
+function setLastClicked () {
+    lastClicked = this.innerHTML;
+    console.log(lastClicked);
+}
 
 function updateRunningTotal () {
     if (currentNumber == '') {
@@ -45,26 +55,32 @@ function updateRunningTotal () {
     else {
         if (runningTotal.innerHTML == '') {
             number1 = Number(currentNumber.innerHTML);
-            // console.log('this is number1: ' + number1);
+            console.log('this is number 1: ' + number1);
         }
         else {
             number2 = Number(currentNumber.innerHTML);
-            // console.log('this is number2: ' + number2);
+            console.log('this is number 2: ' + number2);
             answer = operate(number1, number2, currentOperator);
+            console.log('this is answer: ' + answer);
             number1 = answer;
             number2 = 0;
-            console.log('this is answer: ' + answer);
         }
         
-        let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
-        runningTotal.innerHTML = newRunningTotal;
+        if (this.innerHTML != '=') {
+            let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
+            runningTotal.innerHTML = newRunningTotal;
+        }
+       
+        // displays answer in currentNumber when equal is clicked
         if (this.innerHTML == '=') {
             currentNumber.innerHTML = answer;
         }
         else {
             currentNumber.innerHTML = '';
-            currentOperator = this.innerHTML;
         }
+        
+        // assigns clicked operator to currentOperator variable
+        currentOperator = this.innerHTML;
     }
 };
 

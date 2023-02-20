@@ -26,6 +26,7 @@ let answer = 0;
 let currentOperator = '';
 let lastClicked = '';
 let continueCalc = false;
+let currentNumberLength = 15;
 
 // event listener for all buttons except clear, backspace, percentage and equal
 const populateButtons = Array.from(document.querySelectorAll('.populate'));
@@ -49,7 +50,12 @@ buttons.forEach(button => button.addEventListener('click', setLastClicked));
 function displayAnswer (e) {
     // displays answer in currentNumber when equal is clicked
     if (e.innerHTML == '=') {
-        currentNumber.innerHTML = answer;
+        if (answer.toString().length > currentNumberLength) {
+            currentNumber.innerHTML = answer.toString().substring(0,13) + '...';
+        }
+        else {
+            currentNumber.innerHTML = answer;
+        }
     }
     else {
         currentNumber.innerHTML = '';
@@ -86,7 +92,7 @@ function updateRunningTotal () {
     }
     else {
         number2 = Number(currentNumber.innerHTML);
-        answer = Math.round((operate(number1, number2, currentOperator) + Number.EPSILON) * 10000000000) / 10000000000;
+        answer = Math.round((operate(number1, number2, currentOperator) + Number.EPSILON) * 100000000000) / 100000000000;
         number1 = answer;
         number2 = 0;
     }
@@ -94,11 +100,11 @@ function updateRunningTotal () {
     // updates running total with operator or without equal sign depending on which is clicked
     if (this.innerHTML != '=') {
         let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ' + this.innerHTML;
-        runningTotal.innerHTML = newRunningTotal;
+        runningTotal.innerHTML = newRunningTotal.substring(0, 25);
     }
     else if (this.innerHTML == '=') {
         let newRunningTotal = runningTotal.innerHTML + ' ' + currentNumber.innerHTML + ' ';
-        runningTotal.innerHTML = newRunningTotal;
+        runningTotal.innerHTML = newRunningTotal.substring(0, 25);
     }
 
     displayAnswer(this);
@@ -137,14 +143,17 @@ function checkDisplay(value) {
 };
 
 function populateDisplay() {
-    if (currentNumber.innerHTML == '0') {
-        currentNumber.innerHTML = this.innerHTML;
-    }
-    else if (checkDisplay(this)) {
-        currentNumber.innerHTML += this.innerHTML;
-    }
-    else {
-        currentNumber.innerHTML = this.innerHTML;
+    const length = 15;
+    if (currentNumber.innerHTML.length < 15) {
+        if (currentNumber.innerHTML == '0') {
+            currentNumber.innerHTML = this.innerHTML;
+        }
+        else if (checkDisplay(this)) {
+            currentNumber.innerHTML += this.innerHTML;
+        }
+        else {
+            currentNumber.innerHTML = this.innerHTML;
+        }
     }
 };
 

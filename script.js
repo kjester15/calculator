@@ -68,13 +68,10 @@ function updateRunningTotal () {
     else {
         if (runningTotal.innerHTML == '') {
             number1 = Number(currentNumber.innerHTML);
-            // console.log('this is number 1: ' + number1);
         }
         else {
             number2 = Number(currentNumber.innerHTML);
-            // console.log('this is number 2: ' + number2);
             answer = Math.round((operate(number1, number2, currentOperator) + Number.EPSILON) * 100) / 100;
-            // console.log('this is answer: ' + answer);
             number1 = answer;
             number2 = 0;
         }
@@ -106,7 +103,7 @@ function backspaceDisplay() {
     if (currentNumber.innerHTML.length == 1) {
         let currentArray = Array.from(currentNumber.innerHTML);
         currentArray.pop();
-        currentNumber.innerHTML = '0';
+        currentNumber.innerHTML = '';
     }
     else {
         let currentArray = Array.from(currentNumber.innerHTML);
@@ -117,7 +114,7 @@ function backspaceDisplay() {
 };
 
 function clearDisplay() {
-    currentNumber.innerHTML = '0';
+    currentNumber.innerHTML = '';
     runningTotal.innerHTML = '';
 };
 
